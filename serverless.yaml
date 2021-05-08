@@ -37,4 +37,4 @@ functions:
         Resource: arn:aws:s3:::${self:custom.fileUploadBucketName}/*
     environment:
       FILE_UPLOAD_BUCKET_NAME: ${self:custom.fileUploadBucketName}
-      ENV: ${self:prover.stage}
+      ENV: ${self:provider.stage}
