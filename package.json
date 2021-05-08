@@ -19,5 +19,8 @@
   "dependencies": {
     "aws-sdk": "^2.903.0",
     "serverless-iam-roles-per-function": "^3.1.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^7.0.0"
   }
 }

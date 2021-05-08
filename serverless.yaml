@@ -2,7 +2,8 @@ service: s3-file-uploader
 
 plugins:
   - serverless-iam-roles-per-function
-
+  - serverless-offline
+  
 provider:
   name: aws
   runtime: nodejs14.x

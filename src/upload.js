@@ -7,11 +7,8 @@ module.exports.handler = async event => {
     console.log(event);
 
 
-    let response = {
-        statusCode: 200,
-        body: JSON.stringify({message: "Successfuly uploaded file"})
-    }
-
+    
+    let response;
     try {
         const parsedBody = JSON.parse(event.body);
         const base64File = parsedBody.file;
@@ -24,6 +21,10 @@ module.exports.handler = async event => {
         }
 
         const uploadResult = await s3.upload(params).promise();
+        response = {
+            statusCode: 200,
+            body: JSON.stringify({message: "Successful upload", metadata: uploadResult})
+        }
 
     } catch(e) {
         response = {
