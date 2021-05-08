@@ -1,0 +1,23 @@
+{
+  "name": "s3-file-upload-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melekajacob/s3-file-upload-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melekajacob/s3-file-upload-api/issues"
+  },
+  "homepage": "https://github.com/melekajacob/s3-file-upload-api#readme",
+  "dependencies": {
+    "aws-sdk": "^2.903.0",
+    "serverless-iam-roles-per-function": "^3.1.0"
+  }
+}

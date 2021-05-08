@@ -1,5 +1,8 @@
 service: s3-file-uploader
 
+plugins:
+  - serverless-iam-roles-per-function
+
 provider:
   name: aws
   runtime: nodejs14.x
@@ -16,4 +19,22 @@ resources:
       Properties:
         BucketName: ${self:custom.fileUploadBucketName} # we use the bucket name defined above
         AccessControl: PublicRead # don't use 
-      
+
+functions:
+  s3FileUploader:
+    handler: src/upload.handler # this is how you look in specific folder for function
+    name: s3-file-uploader
+    timeout: 60
+    memorySize: 128
+    events:
+      - http:
+          path: /file/upload
+          method: POST
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - "s3:Put*"
+        Resource: arn:aws:s3:::${self:custom.fileUploadBucketName}/*
+    environment:
+      FILE_UPLOAD_BUCKET_NAME: ${self:custom.fileUploadBucketName}
+      ENV: ${self:prover.stage}
